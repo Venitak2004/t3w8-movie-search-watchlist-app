@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import MovieCard from "../components/MovieCard";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const [query, setQuery] = useState("");
@@ -28,16 +29,19 @@ export default function Home() {
 
       <h1 className="text-center mb-4">Move Search</h1>
       <div className="row">
-        <div className="col-md-8 offset md-2">
+        <div className="col-md-8 offset md-1">
         <input
           type="text"
           placeholder="Search for Movies..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button className="btn btn-prmiary btn-block mt-2" onClick={fetchMovies}>Search</button>
-      </div>
+        <button className="btn btn-primary btn-block mt-2" onClick={fetchMovies}>Search</button>
+        </div>
+        <Link to='/watchlist'>WatchList</Link>
+        </div>
       <div className="row mt-4">
+      
         {movies.map((movie) => (
           <MovieCard key={movie.imdbID} movie={movie} />
         ))}
